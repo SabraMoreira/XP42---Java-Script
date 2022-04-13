@@ -1,72 +1,126 @@
-//Exercicio 1//
-
-var nomeCompleto = "Sabra Gabrielle Silva Moreira";
-
-console.log(nomeCompleto);
-
-//Exercicio 2//
-
-var numeroA = "2";
-var numeroB = "5";
-var resultado = (numeroA * numeroB);
-
-console.log(resultado);
-
-//Exercicio 3//
-
-function saudacao() {
-
-    console.log('Oi eu sou o Goku!');
-}
-saudacao('Oi eu sou o Goku!');
-
-//Exercicio 4//
-
-function multiplica (a,b){
-    return a*b;
-}
-console.log (multiplica (7,9))
-
-//Exercicio 5//
+const nomeEmpresa = "Sistema Omma";
+console.log (nomeEmpresa);
 
 
-var idade = 19;
+let listaDeReceitas = [ // isso é um Array
+    { //professor colocou para que seja uma lista Deful
+    id: 1, //Um identificador único que não pode se repetir no sistema
+    titulo: "Cachorro quente", //titulo da receita
+    dificuldade: "simples", // dificuldade
+    ingredientes: ["1 pão de leite", "1 salsicha", "1 colher de batata palha"], //Array de string
+    preparo: "coloque a salsicha para cozinhar, após cozida coloque no pão junto com os demais ingredientes",
+    link: "http://youtube.com", 
+    vegano: false,
+    },
+];
 
-if (idade >=18) {
-    console.log("Voce pode dirigir");
+const cadastrarReceita = ( // Arrow Function
+    id, 
+    titulo, 
+    dificuldade, 
+    ingredientes, 
+    preparo, 
+    link, 
+    vegano,
+    ) => {
+        
+    const novaReceita = {
+        id, 
+        titulo,
+        dificuldade,
+        ingredientes,
+        preparo,
+        link,
+        vegano,
+    };
 
-} else {
-    console.log("Voce não pode");
-}
+    listaDeReceitas.push(novaReceita); // p/ cadastrar a receita dentro da lista de receitas
 
-//Exercicio 6//
+    console.log (`Cadastro da receita ${titulo} feito com sucesso!`)
 
-for (var i=0; i<=20; i++){
-    console.log(i);
+    };
 
-}
+    function exibirReceitas() {
+        for(let i=0; i< listaDeReceitas.length; i++){
+        const receita = listaDeReceitas[i]; 
+        console.log("-------------------------------");
+        console.log(`Titulo: ${receita.titulo}`);
+       
+        for(let j=0; j< receita.ingredientes.length; j++) {
+        console.log(`-${receita.ingredientes[j]}`);
+    }
+        console.log("É vegano?" , receita.vegano);
+        console.log("-------------------------------");
 
-//Exercicio 7//
 
-for (var i=0; i<=20; i++){
-    if(i%2!=0)
-    console.log(i)
-}
 
-//Exercicio 8//
+        }
+    }
 
-function tabuada (a){
-for (let i = 1; i <= 10; i++) {
- console.log(a + "x" + i + "=" + a*i);
-}
-}
+    function deletarReceita(id){   // 6 função para deletar a receita
+        let novaListaDeReceitas = []
+        for (let i = 0; i< listaDeReceitas.length; i++) {
+            const receita = listaDeReceitas[i];
 
-tabuada(3);
+            if (receita.id !== id){  //quando eu não encontrar esse ID, manda para essa nova lista de Receitas
+                novaListaDeReceitas.push(receita);
+            }
+        }
 
-//Exercicio 9//
+            if (novaListaDeReceitas.length === listaDeReceitas.length) {
+                return console.log("Receita não encontrada")
+            }
 
-function converterEmHoras(minutos) {
-	return console.log(minutos/60)
-}
+            listaDeReceitas = novaListaDeReceitas;
+            console.log("Receita deletada com sucesso")
+    }
 
-converterEmHoras(240)
+    //console.log(listaDeReceitas);
+
+    cadastrarReceita(
+        2,
+        "Ovo Frito",
+        "Simples",
+        ["1 ovo", "1 colher de azeite", "Sal a gosto"],
+        "Leve o azeite ao fogo, coloque o ovo e coloque o sal",
+        "https://wwww.google.com.br",
+        "false",
+    );
+
+    //console.log(listaDeReceitas);
+
+    exibirReceitas();
+    deletarReceita(1);
+    exibirReceitas();
+
+
+
+
+//     listaDeReceitas.push(novaReceita);
+
+//     console.log(`Cadastro da receita "${titulo}" feito com sucesso!`);
+
+// };
+
+// function exibirReceitas(){
+//     for(let i=0; i< listaDeReceitas.çenght, i++)
+
+//         const receita = listaDeReceitas[i];
+//         //olhar print 1 e 2 - Olhar no github o material do professor//////
+
+//     }
+// }
+
+//     cadastrarReceita(
+//         2,
+//         "Ovo frito",
+//         "Simples",
+//         ["1 ovo", "1 colher de azeite", "Sal a gosto"],
+//         "Quebre o ovo, jogue na frigideira, coloque sal",
+//         "https://www.google.com",
+//         false,
+//         );
+    
+//         console.log(listaDeReceitas)
+
+    
